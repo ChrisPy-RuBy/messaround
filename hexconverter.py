@@ -63,7 +63,19 @@ class NumberConverter(object):
         return divisor, remainder
 
     def hextodec(self):
-        pass
+        """
+        Determine the decimal eqivalent of a hex string
+
+        How many bases?
+        What number does the represent
+        """
+        
+        # test '4c4'
+        touse = hexdigits[:16]
+        numbases = len(self.number)
+        total = 0
+
+        for char in 
 
     def hextobin(self):
         pass
