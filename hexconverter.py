@@ -1,3 +1,5 @@
+from string import hexdigits
+
 class NumberConverter(object):
 
     def __init__(self, number):
@@ -29,9 +31,36 @@ class NumberConverter(object):
             else:
                 output_string += '0'
             basesize -= 1
-    
+        return output_string
+
+
     def dectohex(self):
-        pass
+
+        touse = hexdigits[:16]
+        output_string = ""
+        basesize = 0
+
+        while 16**basesize <= self.number:
+            basesize += 1
+
+        while basesize > -1:
+            if 16**basesize <= self.number:
+                divis, remain = self.helperfunction(16**basesize, self.number) 
+                # if divis is greater than 16 need to carry over
+                try:
+                    output_string += hexdigits[divis]
+                    self.number = remain
+                except IndexError:
+                    output_string += '0'
+            basesize -= 1
+        return output_string
+   
+
+    def helperfunction(self, denom, numer):
+
+        divisor = numer / denom
+        remainder = numer % denom
+        return divisor, remainder
 
     def hextodec(self):
         pass
@@ -48,4 +77,4 @@ class NumberConverter(object):
 
         
 test = NumberConverter(1220)
-test.dectobin()
+print(test.dectohex())
