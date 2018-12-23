@@ -68,14 +68,27 @@ class NumberConverter(object):
 
         How many bases?
         What number does the represent
+        
+        Example: '4c4'
+        4 * 1 = 4
+        c * 16 = 12 * 16 = 192
+        4 * 256 = 1024 
+
         """
         
         # test '4c4'
         touse = hexdigits[:16]
-        numbases = len(self.number)
         total = 0
 
-        for char in 
+        #reverse string so that index are bases in 16
+        hexstring = list(self.number).__reversed__()
+
+        for index, number in enumerate(hexstring):
+            # convert number to dec equivalent
+            decvalue = touse.index(number)
+            total += decvalue * (16**index)
+        return total    
+
 
     def hextobin(self):
         pass
@@ -88,5 +101,5 @@ class NumberConverter(object):
 
 
         
-test = NumberConverter(1220)
-print(test.dectohex())
+test = NumberConverter('4c4')
+print(test.hextodec())
